@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spherical Law of Cosines: POV-Ray Tutorial</title>
+<style>
+code, pre { font-size:100%; }
+table
+{ line-height:1.2;
+  margin:0.6em 0;
+  padding:0;
+  border:1px solid silver;
+  border-collapse:collapse;
+}
+td
+{ line-height:1.2;
+  padding:0 0.3em;
+  border:1px solid silver;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Spherical Law of Cosines: a POV-Ray Tutorial</h1>
+
+<h2>The Math</h2>
+
+<dl>
+ <dt>The spherical law of cosines:
+  <img src="spherical_law_of_cosines.png" alt="[Illustration]" style="float:right">
+
+ <dd>
+  <p>cos <var>c</var> = cos <var>a</var> cos <var>b</var> + sin <var>a</var> sin <var>b</var> cos <var>C</var>
+  <p>where <var>a</var>, <var>b</var>, and <var>c</var> are the angular lengths of the sides of a spherical triangle; and <var>C</var> is the angle of the vertex opposite line <var>c</var>.
+  <p>By definition, for a sphere of radius 1, the length of a side is equal to its angular length in radians.
+
+ <dt>Solve for <var>a</var>:
+
+ <dd>
+  <p>cos <var>c</var> = ±√(1 &minus; sin<sup>2</sup><var>a</var>) cos <var>b</var> + sin <var>a</var> sin <var>b</var> cos <var>C</var>
+
+  <p>cos <var>c</var> &minus; sin <var>a</var> sin <var>b</var> cos <var>C</var> = ±√(1 &minus; sin<sup>2</sup><var>a</var>) cos <var>b</var>
+
+  <p>cos<sup>2</sup><var>c</var> + sin<sup>2</sup><var>a</var> sin<sup>2</sup><var>b</var> cos<sup>2</sup><var>C</var> &minus; 2 cos <var>c</var> sin <var>a</var> sin <var>b</var> cos <var>C</var> = (1 &minus; sin<sup>2</sup><var>a</var>) cos<sup>2</sup><var>b</var>
+
+  <p>cos<sup>2</sup><var>c</var> + sin<sup>2</sup><var>a</var> sin<sup>2</sup><var>b</var> cos<sup>2</sup><var>C</var> &minus; 2 cos <var>c</var> sin <var>a</var> sin <var>b</var> cos <var>C</var> = cos<sup>2</sup><var>b</var> &minus; sin<sup>2</sup><var>a</var> cos<sup>2</sup><var>b</var>
+
+  <p>sin<sup>2</sup><var>a</var> sin<sup>2</sup><var>b</var> cos<sup>2</sup><var>C</var> + sin<sup>2</sup><var>a</var> cos<sup>2</sup><var>b</var> &minus; 2 cos <var>c</var> sin <var>a</var> sin <var>b</var> cos <var>C</var> + cos<sup>2</sup><var>c</var> &minus; cos<sup>2</sup><var>b</var> = 0
+
+  <p>(sin<sup>2</sup><var>b</var> cos<sup>2</sup><var>C</var> + cos<sup>2</sup><var>b</var>) sin<sup>2</sup><var>a</var> &minus; (2 cos <var>c</var> sin <var>b</var> cos <var>C</var>) sin <var>a</var> + (cos<sup>2</sup><var>c</var> &minus; cos<sup>2</sup><var>b</var>) = 0
+
+  <p>Now solve the quadratic equation for sin <var>a</var>, yielding up to 2 unique intermediate solutions. Note that since the sine function does not have a unique inverse, there may be more than 2 unique final solutions.
+
+ <dt>Solve for <var>C</var>:
+
+ <dd>
+  <p>cos <var>c</var> &minus; cos <var>a</var> cos <var>b</var> = sin <var>a</var> sin <var>b</var> cos <var>C</var>
+
+  <p>(cos <var>c</var> &minus; cos <var>a</var> cos <var>b</var>) &frasl; (sin <var>a</var> sin <var>b</var>) = cos <var>C</var>
+
+  <p>cos<sup>&minus;1</sup>[(cos <var>c</var> &minus; cos <var>a</var> cos <var>b</var>) &frasl; (sin <var>a</var> sin <var>b</var>)] = <var>C</var>
+</dl>
+
+<h2>Reminder</h2>
+
+<p>All POV-Ray trigonometric functions use radians. To take a function of an angle in degrees, use:
+
+<pre>  sin (radians (AngleInDegrees))
+  cos (radians (AngleInDegrees))</pre>
+
+<p>or
+
+<pre>  #include "math.inc"
+  sind (AngleInDegrees)
+  cosd (AngleInDegrees)</pre>
+
+<p>To convert an inverse trigonometric function to degrees (e.g., for use in a <code>rotate</code> transformation) use:
+
+<pre>  degrees (asin (X))
+  degrees (acos (X))</pre>
+
+<p>or
+
+<pre>  #include "math.inc"
+  asind (X)
+  acosd (X)</pre>
+
+<h2>Links</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Spherical_law_of_cosines#Proofs" target="_blank">Derivation</a>
+| <a href="https://en.wikipedia.org/wiki/Spherical_trigonometry" target="_blank">Spherical trigonometry</a>
+| <a href="https://www.povray.org/">POV-Ray</a>
+
+<h2>About This Tutorial</h2>
+
+<address>
+Copyright © 2013, 2023 Richard Callwood III. Some rights reserved.
+<p>
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc-by-sa.png"></a>
+This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</address>
+
+<table>
+ <caption>Document History</caption>
+ <tr><td>2013 August 28</td> <td>Initial publication.</td></tr>
+ <tr><td>2023 February 18</td> <td>The links are updated and license are updated.</td></tr>
+</table>
+
+</body>
+</html>
